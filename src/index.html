@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+			  src="https://code.jquery.com/jquery-3.7.1.min.js"
+			  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        $(function () {
+            $('#do_ajax').on('click', function () {
+                doAjax();
+            });
+            function doAjax () {
+                $.ajax({
+                    url: './api.php',
+                    type: 'GET',
+                    dataType: 'json',
+                }).done(function (data, textStatus, jqXHR) {
+                    console.log(data);
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR, textStatus, errorThrown);
+                });
+            }
+        });
+    </script>
+
+    <button type="button" id="do_ajax">ajax</button>
+</body>
+</html>
